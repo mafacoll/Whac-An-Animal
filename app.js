@@ -71,7 +71,7 @@ enemy5.src = 'wingMan1.png'
 let summer = new Image();
 summer.src = 'summer.jpg'
 let spring = new Image();
-spring,src = 'spring.png'
+spring.src = 'spring.png'
 let autunm = new Image();
 autunm.src = 'autunm.jpg'
 let winter = new Image();
@@ -99,6 +99,19 @@ let enemies = [{x:100, y:660 , image: enemy1},
   
 
 function draw (){
+    if(score >= 250 && score <500){
+        decrement = 2
+        ctx.drawImage(winter,0,0)
+    }
+    else if(score >= 500 && score < 750 ){
+        decrement = 3
+        ctx.drawImage(spring,0,0)
+    }
+    else if(score >= 750){
+        decrement = 4
+        ctx.drawImage(summer,0,0)
+    }
+
     for (let i=0; i<animals.length; i++){
         ctx.drawImage(animals[i].image, animals[i].x, animals[i].y, width, height)
         animals[i].y= animals[i].y - decrement
@@ -165,21 +178,7 @@ function animation(){
     ctx.fillStyle = 'grey'
     ctx.fillText(`Score:${score}`,50,100)
 
-    if(score >= 250 && score <500){
-        decrement = 2
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.drawImage(winter,0,0)
-    }
-    else if(score >=500 ){
-        decrement = 3
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.drawImage(spring,0,0)
-    }
-    else if(score>= 750){
-        decrement = 4
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.drawImage(summer,0,0)
-    }
+   
  
 }
 
