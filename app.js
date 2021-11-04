@@ -6,6 +6,7 @@ let ctx = canvas.getContext('2d')
 
 //DOM
 let gameOverWritting = document.querySelector("#gameOver")
+let youWonWritting = document.querySelector('#youWon')
 let startBtn = document.querySelector('#start')
 let intro = document.querySelector('#intro')
 let restartBtn = document.querySelector('#restart')
@@ -167,12 +168,17 @@ function animation(){
 
     draw()
 
-    if (score < 0 || score >= 100){
+    if (score < 0){
         cancelAnimationFrame(intervalId)
         gameOver()
         audio.pause()
     }
-    else {
+    else if(score >=100) {
+        cancelAnimationFrame(intervalId)
+        youWon()
+        audio.pause()
+        
+    } else {
         intervalID = requestAnimationFrame(animation)
     }
 
@@ -189,6 +195,7 @@ function animation(){
 function handleStart(){
     startBtn.style.display = 'none'
     gameOverWritting.style.display = 'none'
+    youWonWritting.style.display = 'none'
     restartBtn.style.display = 'none'
     canvas.style.display = 'block'
     audio.play()
@@ -223,10 +230,37 @@ function gameOver(){
         
 }
 
+function youWon(){
+    youWonWritting.style.display = 'block'
+    restartBtn.style.display = 'block'
+    canvas.style.display = 'none'
+    score = 0
+     animals =[{x:100, y:660 , image: animal1},
+        {x:200, y : 660 , image: animal2},
+        {x:400, y : 660 , image: animal3},
+        {x:600, y : 660 , image: animal4},
+        {x:800, y : 660 , image: animal5},
+        {x:1000, y : 660 , image: animal6},
+        {x:1200, y : 660 , image: animal7},
+        {x:1400, y : 660 , image: animal8},
+        {x:100, y : 660 , image: animal9},
+        {x:300, y : 660 , image: animal10},
+        {x:500, y : 660 , image: carrot, magic:true}]
+    
+     enemies = [{x:100, y:660 , image: enemy1},
+        {x:700, y : 660 , image: enemy2},
+        {x:900, y : 660 , image: enemy3},
+        {x:1100, y : 660 , image: enemy4},
+        {x:1300, y : 660 , image: enemy5},
+        {x:100, y : 660 , image: taka, death:true}]
+        
+}
+
 window.addEventListener('load',() =>{
     canvas.style.display = 'none'
     restartBtn.style.display = 'none'
     gameOverWritting.style.display = 'none'
+    youWonWritting.style.display = 'none'
     
     startBtn.addEventListener('click',() =>{
         intro.classList.add('intro')
