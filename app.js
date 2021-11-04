@@ -15,7 +15,7 @@ let score = 0;
 let audio = new Audio('bensound-hey.mp3')
 let effect = new Audio('bottle_pop_2.wav')
 let carrotSound = new Audio('1196_crowd-excited-01.mp3')
-let takaSound = new Audio('1966_glass-breaking-05.mp3')
+let takaSound = new Audio('takaSound.mp3')
 let enemySound = new Audio('1029_champagne-bottle-pop-01.mp3')
 let x = 700
 let z = 400
@@ -34,6 +34,8 @@ let clientY = 0
 //load images
 let background = new Image();
 background.src = 'sky.jpg'
+let sunset = new Image();
+sunset.src = 'sunset.jpg'
 let animal1 = new Image();
 animal1.src = 'elephant.png'
 let animal2= new Image();
@@ -105,11 +107,11 @@ function draw (){
     }
     else if(score >= 50 && score < 75 ){
         decrement = 3
-        ctx.drawImage(spring,0,0)
+        ctx.drawImage(spring,0,0,canvas.width,canvas.height)
     }
     else if(score >= 75){
         decrement = 4
-        ctx.drawImage(summer,0,0)
+        ctx.drawImage(summer,0,0,canvas.width,canvas.height)
     }
 
     for (let i=0; i<animals.length; i++){
@@ -129,7 +131,7 @@ function draw (){
             } else {
              score = score + 10
              effect.play()
-            effect.volume = 0.3
+             effect.volume = 0.3
             }
         } 
     }
@@ -210,14 +212,14 @@ function gameOver(){
         {x:1400, y : 660 , image: animal8},
         {x:100, y : 660 , image: animal9},
         {x:300, y : 660 , image: animal10},
-        {x:500, y : 660 , image: carrot}]
+        {x:500, y : 660 , image: carrot, magic:true}]
     
      enemies = [{x:100, y:660 , image: enemy1},
         {x:700, y : 660 , image: enemy2},
         {x:900, y : 660 , image: enemy3},
         {x:1100, y : 660 , image: enemy4},
         {x:1300, y : 660 , image: enemy5},
-        {x:100, y : 660 , image: taka}]
+        {x:100, y : 660 , image: taka, death:true}]
         
 }
 
