@@ -99,15 +99,15 @@ let enemies = [{x:100, y:660 , image: enemy1},
   
 
 function draw (){
-    if(score >= 250 && score <500){
+    if(score >= 25 && score <50){
         decrement = 2
         ctx.drawImage(winter,0,0)
     }
-    else if(score >= 500 && score < 750 ){
+    else if(score >= 50 && score < 75 ){
         decrement = 3
         ctx.drawImage(spring,0,0)
     }
-    else if(score >= 750){
+    else if(score >= 75){
         decrement = 4
         ctx.drawImage(summer,0,0)
     }
@@ -165,9 +165,10 @@ function animation(){
 
     draw()
 
-    if (score < 0 || score >= 1000){
+    if (score < 0 || score >= 100){
         cancelAnimationFrame(intervalId)
         gameOver()
+        audio.pause()
     }
     else {
         intervalID = requestAnimationFrame(animation)
