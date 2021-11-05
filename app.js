@@ -102,15 +102,15 @@ let enemies = [{x:100, y:660 , image: enemy1},
   
 
 function draw (){
-    if(score >= 25 && score <50){
+    if(score >= 250 && score <500){
         decrement = 2
         ctx.drawImage(winter,0,0)
     }
-    else if(score >= 50 && score < 75 ){
+    else if(score >= 500 && score < 750 ){
         decrement = 3
         ctx.drawImage(spring,0,0,canvas.width,canvas.height)
     }
-    else if(score >= 75){
+    else if(score >= 750){
         decrement = 4
         ctx.drawImage(summer,0,0,canvas.width,canvas.height)
     }
