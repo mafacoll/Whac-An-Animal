@@ -173,7 +173,7 @@ function animation(){
         gameOver()
         audio.pause()
     }
-    else if(score >=100) {
+    else if(score >= 1000) {
         cancelAnimationFrame(intervalId)
         youWon()
         audio.pause()
